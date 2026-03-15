@@ -4,9 +4,10 @@ import { PanelLeft } from 'lucide-react';
 type HeaderProps = {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
+  activeTabName: string;
 };
 
-export default function Header({ isOpen, setIsOpen }: HeaderProps) {
+export default function Header({ isOpen, setIsOpen, activeTabName }: HeaderProps) {
   return (
     <header
       className={cn(
@@ -26,7 +27,7 @@ export default function Header({ isOpen, setIsOpen }: HeaderProps) {
         onClick={() => setIsOpen(!isOpen)}>
         <PanelLeft className={cn('w-[20px] h-[20px] text-gray-700')} />
       </div>
-      <h1 className={cn('typo-2')}>선택된 탭</h1>
+      <h1 className={cn('typo-2')}>{activeTabName}</h1>
     </header>
   );
 }
