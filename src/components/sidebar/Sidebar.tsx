@@ -2,6 +2,8 @@ import TabList from './TabList';
 import { cn } from '@/lib/utils';
 import { PanelLeft } from 'lucide-react';
 import Image from 'next/image';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import TabButton from './TabButton';
 
 type SidebarProps = {
   isOpen: boolean;
@@ -46,8 +48,16 @@ export default function Sidebar({ isOpen, setIsOpen, isMounted, onTabSelect }: S
       <div className={cn('w-full', 'flex justify-between items-center', 'mb-[20px]')}>
         <h2 className="typo-2">비로그인 상태</h2>
       </div>
-      <div className="flex-1 overflow-y-auto min-h-0">
-        <TabList onTabSelect={onTabSelect} />
+      {/* 탭 추가 */}
+      <div
+        className={cn('w-full', 'flex justify-between items-center', 'px-[5px] py-[5px] rounded-md hover:bg-gray-100')}>
+        <p className={cn('typo-1')}>탭 목록</p>
+        <TabButton />
+      </div>
+      <div className="flex-1 min-h-0">
+        <ScrollArea className="h-full">
+          <TabList onTabSelect={onTabSelect} />
+        </ScrollArea>
       </div>
     </aside>
   );

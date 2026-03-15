@@ -47,15 +47,10 @@ export default function TabList({ onTabSelect }: TabListProps) {
   };
 
   return (
-    <div>
-      <div
-        className={cn('w-full', 'flex justify-between items-center', 'px-[5px] py-[5px] rounded-md hover:bg-gray-100')}>
-        <p className={cn('typo-1')}>탭 목록</p>
-        <TabButton />
-      </div>
+    <div className={cn('pr-[15px]')}>
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={tabIds} strategy={verticalListSortingStrategy}>
-          <ul className={cn('overflow-y-auto')}>
+          <ul>
             {tabs.map((tab) => (
               <TabItem key={tab.id} tab={tab} onTabSelect={onTabSelect} />
             ))}
