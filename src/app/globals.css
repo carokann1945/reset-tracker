@@ -3,6 +3,7 @@
 @theme inline {
   --font-pretendard: var(--font-pretendard), sans-serif;
   --color-silver-custom: #f8f9fa;
+  --color-accent-blue: #339af0;
 }
 
 @utility typo-1 {

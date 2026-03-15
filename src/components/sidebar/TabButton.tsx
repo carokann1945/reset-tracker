@@ -3,7 +3,7 @@
 import { useAppStore } from '@/lib/store';
 import { cn } from '@/lib/utils';
 
-export default function AddTabButton() {
+export default function TabButton() {
   const { addTab } = useAppStore();
 
   return (
@@ -16,11 +16,10 @@ export default function AddTabButton() {
       }}
       className={cn(
         'w-[35px] h-[35px]',
-        'rounded-md bg-silver-custom shadow-md',
-        'mb-[20px]',
+        'rounded-md',
         'cursor-pointer',
         'hover:bg-gray-200',
-        'transition-color duration-300',
+        'transition-color duration-100',
       )}>
       +
     </button>

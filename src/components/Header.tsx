@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { PanelLeft } from 'lucide-react';
 
 type HeaderProps = {
   isOpen: boolean;
@@ -7,10 +8,24 @@ type HeaderProps = {
 
 export default function Header({ isOpen, setIsOpen }: HeaderProps) {
   return (
-    <header className={cn('z-10 h-[70px]', 'flex items-center', 'pl-[30px]', 'bg-white text-black shadow-sm')}>
-      <button className={cn('md:hidden border border-gray-600 rounded')} onClick={() => setIsOpen(!isOpen)}>
-        열기
-      </button>
+    <header
+      className={cn(
+        'z-10 h-[70px]',
+        'flex items-center gap-[8px]',
+        'pl-[16px]',
+        'bg-white text-black border border-gray-200',
+      )}>
+      <div
+        className={cn(
+          'w-[30px] h-[30px] rounded-md',
+          'flex justify-center items-center',
+          'cursor-pointer hover:bg-gray-100',
+          'transition-color duration-100',
+          isOpen ? 'hidden' : '',
+        )}
+        onClick={() => setIsOpen(!isOpen)}>
+        <PanelLeft className={cn('w-[20px] h-[20px] text-gray-700')} />
+      </div>
       <h1 className={cn('typo-2')}>선택된 탭</h1>
     </header>
   );

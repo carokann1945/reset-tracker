@@ -2,6 +2,7 @@
 
 import type { Tab } from '@/lib/types';
 import { useAppStore } from '@/lib/store';
+import { cn } from '@/lib/utils';
 
 export default function TabItem({ tab }: { tab: Tab }) {
   const { state, setActiveTab } = useAppStore();
@@ -12,8 +13,15 @@ export default function TabItem({ tab }: { tab: Tab }) {
       <button
         type="button"
         onClick={() => setActiveTab(tab.id)}
-        className={`w-full rounded-lg px-3 py-2 text-left ${isActive ? 'bg-black text-white' : 'bg-gray-100'}`}>
-        {tab.name}
+        className={cn(
+          'w-full',
+          'py-[12px] pl-[10px]',
+          'rounded-md cursor-pointer',
+          !isActive && 'hover:bg-gray-100',
+          'typo-1 text-start',
+          isActive ? 'bg-accent-blue/10 text-accent-blue' : 'bg-white text-black',
+        )}>
+        <span className={cn('text-gray-500')}>#</span> {tab.name}
       </button>
     </li>
   );
