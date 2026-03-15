@@ -6,9 +6,10 @@ import Image from 'next/image';
 type SidebarProps = {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
+  isMounted: boolean;
 };
 
-export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
+export default function Sidebar({ isOpen, setIsOpen, isMounted }: SidebarProps) {
   return (
     <aside
       className={cn(
@@ -17,7 +18,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         'fixed top-0 left-0',
         'bg-white text-black border border-gray-200',
         'translate-x-full',
-        'transition-transform duration-300',
+        isMounted && 'transition-transform duration-300',
         isOpen ? 'translate-x-0' : '-translate-x-full',
       )}>
       {/* 사이트 로고 제목 */}
