@@ -1,10 +1,9 @@
-import Sidebar from '@/components/sidebar/Sidebar';
-import { cn } from '@/lib/utils';
+import LayoutWrapper from '@/components/LayoutWrapper';
 
 export default function Home() {
   return (
     <>
-      <Sidebar />
+      <LayoutWrapper />
     </>
   );
 }

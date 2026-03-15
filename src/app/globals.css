@@ -2,4 +2,21 @@
 
 @theme inline {
   --font-pretendard: var(--font-pretendard), sans-serif;
+  --color-silver-custom: #f8f9fa;
+}
+
+@utility typo-1 {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+@utility typo-2 {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 700;
 }

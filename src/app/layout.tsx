@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.variable} antialiased bg-[#F8F9FA]`}>
+      <body className={`${pretendard.variable} antialiased bg-silver-custom`}>
         <Providers>{children}</Providers>
       </body>
     </html>
