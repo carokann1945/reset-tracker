@@ -11,6 +11,7 @@ type AppStore = {
   addTab: (name: string) => void;
   renameTab: (tabId: string, name: string) => void;
   deleteTab: (tabId: string) => void;
+  reorderTabs: (nextOrderedIds: string[]) => void;
   setActiveTab: (tabId: string | null) => void;
 };
 
@@ -19,6 +20,7 @@ type Action =
   | { type: 'ADD_TAB'; name: string }
   | { type: 'RENAME_TAB'; tabId: string; name: string }
   | { type: 'DELETE_TAB'; tabId: string }
+  | { type: 'REORDER_TABS'; nextOrderedIds: string[] }
   | { type: 'SET_ACTIVE_TAB'; tabId: string | null };
 
 const EMPTY_STATE: AppState = {
@@ -68,6 +70,24 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, tabs, activeTabId };
     }
 
+    case 'REORDER_TABS': {
+      if (action.nextOrderedIds.length !== state.tabs.length) return state;
+
+      const tabsById = new Map(state.tabs.map((tab) => [tab.id, tab]));
+      const reorderedTabs = action.nextOrderedIds.map((tabId, index) => {
+        const tab = tabsById.get(tabId);
+        if (!tab) return null;
+        return { ...tab, position: index };
+      });
+
+      if (reorderedTabs.some((tab) => tab === null)) return state;
+
+      return {
+        ...state,
+        tabs: reorderedTabs.filter((tab): tab is Tab => tab !== null),
+      };
+    }
+
     case 'SET_ACTIVE_TAB': {
       if (action.tabId === null) {
         return { ...state, activeTabId: null };
@@ -114,6 +134,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       addTab: (name) => dispatch({ type: 'ADD_TAB', name }),
       renameTab: (tabId, name) => dispatch({ type: 'RENAME_TAB', tabId, name }),
       deleteTab: (tabId) => dispatch({ type: 'DELETE_TAB', tabId }),
+      reorderTabs: (nextOrderedIds) => dispatch({ type: 'REORDER_TABS', nextOrderedIds }),
       setActiveTab: (tabId) => dispatch({ type: 'SET_ACTIVE_TAB', tabId }),
     }),
     [state, hydrated],
