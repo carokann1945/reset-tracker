@@ -13,7 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useAppStore } from '@/lib/store';
 import { cn } from '@/lib/utils';
-import type { FormEvent } from 'react';
+import type { SubmitEventHandler } from 'react';
 import { useState } from 'react';
 
 export default function TabButton() {
@@ -26,12 +26,10 @@ export default function TabButton() {
     setName('');
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-
     const trimmedName = name.trim();
     if (!trimmedName) return;
-
     addTab(trimmedName);
     handleOpenChange(false);
   };
