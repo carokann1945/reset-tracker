@@ -7,9 +7,10 @@ type SidebarProps = {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   isMounted: boolean;
+  onTabSelect: (tabId: string) => void;
 };
 
-export default function Sidebar({ isOpen, setIsOpen, isMounted }: SidebarProps) {
+export default function Sidebar({ isOpen, setIsOpen, isMounted, onTabSelect }: SidebarProps) {
   return (
     <aside
       className={cn(
@@ -44,7 +45,7 @@ export default function Sidebar({ isOpen, setIsOpen, isMounted }: SidebarProps) 
       <div className={cn('w-full', 'flex justify-between items-center', 'mb-[20px]')}>
         <h2 className="typo-2">비로그인 상태</h2>
       </div>
-      <TabList />
+      <TabList onTabSelect={onTabSelect} />
     </aside>
   );
 }

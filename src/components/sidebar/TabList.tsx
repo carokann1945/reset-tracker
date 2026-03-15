@@ -20,7 +20,11 @@ import { cn } from '@/lib/utils';
 import TabItem from './TabItem';
 import TabButton from './TabButton';
 
-export default function TabList() {
+type TabListProps = {
+  onTabSelect: (tabId: string) => void;
+};
+
+export default function TabList({ onTabSelect }: TabListProps) {
   const { state, reorderTabs } = useAppStore();
 
   const tabs = [...state.tabs].sort((a, b) => a.position - b.position);
@@ -53,7 +57,7 @@ export default function TabList() {
         <SortableContext items={tabIds} strategy={verticalListSortingStrategy}>
           <ul>
             {tabs.map((tab) => (
-              <TabItem key={tab.id} tab={tab} />
+              <TabItem key={tab.id} tab={tab} onTabSelect={onTabSelect} />
             ))}
           </ul>
         </SortableContext>
