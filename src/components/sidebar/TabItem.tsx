@@ -130,7 +130,7 @@ export default function TabItem({ tab, onTabSelect }: TabItemProps) {
               className={cn(
                 'w-[30px] h-[30px]',
                 'flex justify-center items-center shrink-0',
-                'opacity-0 group-hover:opacity-100 data-[state=open]:opacity-100 data-[state=open]:bg-gray-200 hover:bg-gray-200',
+                'md:opacity-0 group-hover:opacity-100 data-[state=open]:opacity-100 data-[state=open]:bg-gray-200 hover:bg-gray-200',
                 'cursor-pointer rounded-md',
               )}>
               <MoreHorizontal className={cn('w-[25px] h-[15px]')} />

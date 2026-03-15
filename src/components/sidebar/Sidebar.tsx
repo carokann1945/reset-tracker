@@ -15,6 +15,7 @@ export default function Sidebar({ isOpen, setIsOpen, isMounted, onTabSelect }: S
     <aside
       className={cn(
         'z-20 w-[300px] h-screen',
+        'flex flex-col',
         'p-[15px]',
         'fixed top-0 left-0',
         'bg-white text-black border border-gray-200',
@@ -45,7 +46,9 @@ export default function Sidebar({ isOpen, setIsOpen, isMounted, onTabSelect }: S
       <div className={cn('w-full', 'flex justify-between items-center', 'mb-[20px]')}>
         <h2 className="typo-2">비로그인 상태</h2>
       </div>
-      <TabList onTabSelect={onTabSelect} />
+      <div className="flex-1 overflow-y-auto min-h-0">
+        <TabList onTabSelect={onTabSelect} />
+      </div>
     </aside>
   );
 }

@@ -55,7 +55,7 @@ export default function TabList({ onTabSelect }: TabListProps) {
       </div>
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={tabIds} strategy={verticalListSortingStrategy}>
-          <ul>
+          <ul className={cn('overflow-y-auto')}>
             {tabs.map((tab) => (
               <TabItem key={tab.id} tab={tab} onTabSelect={onTabSelect} />
             ))}
