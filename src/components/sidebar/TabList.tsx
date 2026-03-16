@@ -18,7 +18,6 @@ import {
 import { useAppStore } from '@/lib/store';
 import { cn } from '@/lib/utils';
 import TabItem from './TabItem';
-import TabButton from './TabButton';
 
 type TabListProps = {
   onTabSelect: (tabId: string) => void;

@@ -94,7 +94,7 @@ export default function TabItem({ tab, onTabSelect }: TabItemProps) {
         ref={setNodeRef}
         style={style}
         className={cn(
-          'group w-full',
+          'group w-full max-w-[255px]',
           'py-[4px] pl-[10px]',
           'flex justify-between items-center',
           'rounded-md cursor-pointer',
